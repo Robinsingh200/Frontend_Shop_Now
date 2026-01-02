@@ -12,6 +12,7 @@ import { ProfileAndOrder } from "./Pages/ProfileAndOrder"
 import { AddtoCart } from "./components/PaymentAndCart/Cart"
 import { Dashboard } from "./Pages/Dashboard"
 import { SingleProducts } from "./components/Products_Dtails/Single_Photo/SingleProducts"
+import { VerifyOtp } from "./Pages/verifyOtp"
 
 import { Add } from './Pages/Admin/Add.jsx'
 import { AdminOrder } from './Pages/Admin/AdminOrder'
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
   { path: "/shop-products/profile/:userId", element: <><Navbar /><ProfileAndOrder /><Footer/></> },
   { path: "/shop-products/Useroder", element: <><Navbar /><UserOrder /></> },
   { path: "/ForgetPassword", element: <>< ForgetPassword/></> },
+  { path: "/verifyOtp", element: <>< VerifyOtp/></> },
 
   { path: "/shop-products/:id", element: <><Navbar /><SingleProducts /><Footer></Footer></> },
 

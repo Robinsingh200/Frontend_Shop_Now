@@ -2,10 +2,12 @@ import { API_URL } from "@/config/app";
 import axios from "axios";
 import { toast } from "sonner";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const ForgetPassword = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const Nevigate  = useNavigate()
 
   const handleSubmit = async () => {
     if (!email) {
@@ -23,7 +25,8 @@ export const ForgetPassword = () => {
 
       if (response.data.success) {
         toast.success("OTP sent to your email");
-        // 👉 navigate to OTP verify page if needed
+        Nevigate('/verifyOtp')
+        
       }
     } catch (error) {
       toast.error(
