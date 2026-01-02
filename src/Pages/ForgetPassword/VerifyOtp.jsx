@@ -55,7 +55,7 @@ export const VerifyOtp = () => {
 
       if (response.data.success) {
         toast.success("OTP verified successfully");
-        navigate("/reset-password");
+        navigate("/ForgetPassword/verifyotp/NewPasswordAdd");
       }
     } catch (error) {
       toast.error(
