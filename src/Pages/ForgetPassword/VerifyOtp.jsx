@@ -19,13 +19,13 @@ export const VerifyOtp = () => {
       setLoading(true);
 
       const response = await axios.post(
-        `${API_URL}/verify-otp`,
+        `${API_URL}/Verify-otp`,
         { otp },
         { withCredentials: true }
       );
 
       if (response.data.success) {
-        toast.success("OTP verified");
+        toast.success(response.data.message);
         navigate("/reset-password");
       }
     } catch (error) {
