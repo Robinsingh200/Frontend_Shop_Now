@@ -9,7 +9,8 @@ import { API_URL } from '@/config/app';
 export const Card_Itam = () => {
   const [GetData, SetData] = useState([])
   const dispatch = useDispatch()
-
+ console.log("Check" , API_URL);
+ 
 
   const getProducts = async () => {
     try {
