@@ -33,7 +33,7 @@ const router = createBrowserRouter([
   { path: "/shop-products/profile/:userId", element: <><Navbar /><ProfileAndOrder /><Footer/></> },
   { path: "/shop-products/Useroder", element: <><Navbar /><UserOrder /></> },
   { path: "/ForgetPassword", element: <>< ForgetPassword/></> },
-  { path: "/verifyOtp", element: <>< VerifyOtp/></> },
+  { path: "/verifyotp", element: <>< VerifyOtp/></> },
 
   { path: "/shop-products/:id", element: <><Navbar /><SingleProducts /><Footer></Footer></> },
 
