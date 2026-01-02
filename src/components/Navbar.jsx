@@ -28,7 +28,9 @@ export const Navbar = () => {
 
   const UserLogOut = async () => {
     try {
-      const response = await axios.post(`${API_URL}/logout`);
+      const response = await axios.post(`${API_URL}/logout`, {},
+        {withCredentials: true}
+      );
 
       if (response.data.success) {
         dispatch(setProducts(null));
