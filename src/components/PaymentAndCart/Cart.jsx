@@ -32,6 +32,7 @@ export const AddtoCart = () => {
 
    const HandlePayment = async () => {
   try {
+    console.log("RAZORPAY KEY =>", RAZORPAY_KEY);
     const response = await axios.post(
       `${API_URL}/shop-products/card-shop/payment`,
       {
