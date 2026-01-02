@@ -13,7 +13,9 @@ export const UserInfo = () => {
   useEffect(() => {
     const fatchData = async () => {
       try {
-        axios.get(`${API_URL}/alluser`)
+        axios.get(`${API_URL}/alluser`,{withCredentials:true},{
+          
+        })
 
         if (response.data.success) {
           setUserInfo(response.data.User)
