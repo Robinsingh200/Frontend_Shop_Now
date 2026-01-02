@@ -13,6 +13,7 @@ import { setProducts } from '@/ReduxToolKit/UserData'
 import { API_URL } from '@/config/app'
 
 
+
 export const Login = () => {
 
     const nevigate = useNavigate()
@@ -59,6 +60,9 @@ export const Login = () => {
     };
 
 
+    
+
+
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-50">
@@ -96,16 +100,21 @@ export const Login = () => {
                                 onChange={handleChage}
                                 required />
                         </div>
-                        <CardFooter className="flex-col gap-2">
-                            <Button type="submit" className="w-full cursor-pointer">
+                        <CardFooter className="flex-col gap-3">
+                            <Button type="submit" className="w-[330px] cursor-pointer">
 
                                 {loding ? <><Loader2 className=' animate-spin cursor-pointer' /></> : "Login"}
                             </Button>
+
+                            <Link to={'/ForgetPassword'}>
+                            <div className='hover:text-red-400 cursor-pointer'>Forgot Password ?</div>
+                            </Link>
 
                             <p>If You don't have account ? <Link to={'/signup'} className='hover:underline cursor-pointer text-red-500'>Signup</Link></p>
 
                         </CardFooter>
                     </form>
+
                 </CardContent>
 
 

@@ -19,6 +19,7 @@ import { UserInfo } from './Pages/Admin/UserInfo'
 import { UserOrder } from "./Pages/UserOder"
 import { Dashboardlayout } from "./components/Dashboeadlayout"
 import { Adminproduct } from "./Pages/Admin/Adminproduct"
+import { ForgetPassword } from "./Pages/ForgetPassword" 
 
 const router = createBrowserRouter([
   { path: '/', element: <><Home /><Footer /></> },
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
   { path: "/shop-products/card-shop", element: <><Navbar /><AddtoCart /><Footer /></> },
   { path: "/shop-products/profile/:userId", element: <><Navbar /><ProfileAndOrder /><Footer/></> },
   { path: "/shop-products/Useroder", element: <><Navbar /><UserOrder /></> },
+  { path: "/ForgetPassword", element: <>< ForgetPassword/></> },
 
   { path: "/shop-products/:id", element: <><Navbar /><SingleProducts /><Footer></Footer></> },
 
