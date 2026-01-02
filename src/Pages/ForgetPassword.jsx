@@ -24,8 +24,8 @@ export const ForgetPassword = () => {
       );
 
       if (response.data.success) {
-        toast.success("OTP sent to your email");
-        Nevigate('/verifyotp')
+        toast.success(response.data.message);
+        Nevigate('/ForgetPassword/verifyot')
         
       }
     } catch (error) {
