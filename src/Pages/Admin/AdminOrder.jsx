@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import { MdSearch } from "react-icons/md";
+import { API_URL } from '@/config/app';
 
 export const AdminOrder = () => {
   const [OrderInfo, setOrderInfo] = useState([]);
