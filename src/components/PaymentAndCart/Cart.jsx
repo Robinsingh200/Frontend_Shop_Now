@@ -14,8 +14,9 @@ export const AddtoCart = () => {
 
     const ItemButtonHandle = async (productId, type) => {
         try {
-            const response = await axios.patch(`${API_URL}cartupdate`,
-                { productId, type }
+            const response = await axios.patch(`${API_URL}/cartupdate`,
+                { productId, type },
+                {withCredentials:true}
             );
             if (response?.data?.success) {
                 dispatch(setCart(response.data.cart))
@@ -37,7 +38,8 @@ export const AddtoCart = () => {
                     amount: cart.totalPrice,
                     cartItems: cart.item,
                     userId: cart.UserId,
-                }
+                },
+                {withCredentials:true}
             );
 
 
@@ -94,7 +96,7 @@ export const AddtoCart = () => {
 
             const response = await axios.delete(
                 `${API_URL}/cartRemove`,
-                { data: { productId } }
+                { data: { productId },withCredentials:true },
             );
             if (response?.data?.success) {
                 dispatch(setCart(response.data.cart))
