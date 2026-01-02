@@ -18,8 +18,10 @@ export const Adminproduct = () => {
     if (!confirmDelete) return;
     try {
 
-      await axios.delete(
-        `${API_URL}/admin/delete/${productId}`
+     const response =  await axios.delete(
+        `${API_URL}/admin/delete/${productId}`,{
+           withCredentials:true
+        }
       )
 
       if (response.data.success) {
@@ -54,7 +56,7 @@ export const Adminproduct = () => {
             <div key={item._id}>
 
               <div className=' border border-gray-500 flex gap-5  m-5 p-2 rounded-xl'>
-                <img src={item.productsImg[0].url} alt="" width={70} height={70} className='rounded-xl' />
+                <img src={item.productsImg[0].url || "No image"} alt="" width={70} height={70} className='rounded-xl' />
                 <span className='w-96 mt-2'>{item.productsName}</span>
                 <span className='flex justify-center items-center text-xl font-semibold'>₹{item.productsPrice}</span>
 
