@@ -12,7 +12,6 @@ import { ProfileAndOrder } from "./Pages/ProfileAndOrder"
 import { AddtoCart } from "./components/PaymentAndCart/Cart"
 import { Dashboard } from "./Pages/Dashboard"
 import { SingleProducts } from "./components/Products_Dtails/Single_Photo/SingleProducts"
-import { VerifyOtp } from "./Pages/ForgetPassword/VerifyOtp"
 
 import { Add } from './Pages/Admin/Add.jsx'
 import { AdminOrder } from './Pages/Admin/AdminOrder'
@@ -20,6 +19,8 @@ import { UserInfo } from './Pages/Admin/UserInfo'
 import { UserOrder } from "./Pages/UserOder"
 import { Dashboardlayout } from "./components/Dashboeadlayout"
 import { Adminproduct } from "./Pages/Admin/Adminproduct"
+
+import { VerifyOtp } from "./Pages/ForgetPassword/VerifyOtp"
 import { NewPasswordAdd } from "./Pages/ForgetPassword/NewPasswordAdd"
 import { ForgetPassword } from "./Pages/ForgetPassword/ForgetPassword"
 
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
   { path: "/shop-products/card-shop", element: <><Navbar /><AddtoCart /><Footer /></> },
   { path: "/shop-products/profile/:userId", element: <><Navbar /><ProfileAndOrder /><Footer/></> },
   { path: "/shop-products/Useroder", element: <><Navbar /><UserOrder /></> },
+
   { path: "/ForgetPassword", element: <>< ForgetPassword/></> },
   { path: "/ForgetPassword/verifyotp", element: <><VerifyOtp/></> },
   { path: "/ForgetPassword/verifyotp/NewPasswordAdd", element: <><NewPasswordAdd/></> },

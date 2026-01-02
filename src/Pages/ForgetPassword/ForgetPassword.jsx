@@ -25,7 +25,7 @@ export const ForgetPassword = () => {
 
       if (response.data.success) {
         toast.success(response.data.message);
-        Nevigate('/ForgetPassword/verifyot')
+        Nevigate('/ForgetPassword/verifyotp')
         
       }
     } catch (error) {
