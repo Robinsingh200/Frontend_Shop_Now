@@ -202,7 +202,7 @@ export const AddtoCart = () => {
                                     Proceed to Checkout
                                 </button>
                                 <div className="mt-5">
-                                    <img src="../public/products/cartimage.webp" alt="image" />
+                                    <img src="https://res.cloudinary.com/daplqp2ck/image/upload/v1767352712/cartimage_lxy5lp.webp" alt="image" />
                                 </div>
                             </div>
 
