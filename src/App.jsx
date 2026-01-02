@@ -12,7 +12,7 @@ import { ProfileAndOrder } from "./Pages/ProfileAndOrder"
 import { AddtoCart } from "./components/PaymentAndCart/Cart"
 import { Dashboard } from "./Pages/Dashboard"
 import { SingleProducts } from "./components/Products_Dtails/Single_Photo/SingleProducts"
-import { VerifyOtp } from "./Pages/verifyOtp"
+import { VerifyOtp } from "./Pages/ForgetPassword/VerifyOtp"
 
 import { Add } from './Pages/Admin/Add.jsx'
 import { AdminOrder } from './Pages/Admin/AdminOrder'
