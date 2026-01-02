@@ -27,7 +27,8 @@ export const ImageSingle = ({ images, productId }) => {
 
     try {
       const response = await axios.post("http://localhost:1000/api/cartAdd",
-         { productId }
+         { productId },
+         {withCredentials:true}
         );
 
       if (response.data.success) {
