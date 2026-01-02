@@ -20,7 +20,7 @@ export const Card_Itam = () => {
         dispatch(setProducts(response.data.products))
       }
     } catch (error) {
-      return toast.error(error?.response?.data.message || "Products fatch failed")
+      return toast.error(error?.response?.data.message || "Products fatching failed")
     }
 
   };
