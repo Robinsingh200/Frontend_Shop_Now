@@ -13,16 +13,17 @@ export const UserInfo = () => {
   useEffect(() => {
     const fatchData = async () => {
       try {
-      const response = axios.get(`${API_URL}/alluser`,{withCredentials:true},{
-          
-        })
+        const response = await axios.get(`${API_URL}/alluser`, { withCredentials: true })
 
         if (response.data.success) {
           setUserInfo(response.data.User)
         }
 
       } catch (error) {
-        toast.error(error?.data?.message || "user fatch failed")
+        toast.error(
+          error?.response?.data?.message || "User fetch failed"
+        );
+
       }
 
     }
