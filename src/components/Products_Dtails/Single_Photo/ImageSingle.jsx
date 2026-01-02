@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import { setCart } from '@/ReduxToolKit/Products';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '@/config/app';
 
 
 export const ImageSingle = ({ images, productId }) => {
@@ -26,7 +27,7 @@ export const ImageSingle = ({ images, productId }) => {
     console.log('hello');
 
     try {
-      const response = await axios.post("http://localhost:1000/api/cartAdd",
+      const response = await axios.post(`${API_URL}/cartAdd`,
          { productId },
          {withCredentials:true}
         );
