@@ -13,7 +13,9 @@ export const AdminOrder = () => {
 
     try {
       const response = await axios.get(
-        `${API_URL}/shop-products/card-shop/Allorder`
+        `${API_URL}/shop-products/card-shop/Allorder` , {
+            withCredentials:true
+        }
       );
 
       if (response.data?.success) {
