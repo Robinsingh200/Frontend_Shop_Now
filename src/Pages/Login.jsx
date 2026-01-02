@@ -12,12 +12,13 @@ import { useDispatch } from 'react-redux'
 import { setProducts } from '@/ReduxToolKit/UserData'
 import { API_URL } from '@/config/app'
 
+
 export const Login = () => {
 
     const nevigate = useNavigate()
     const dispatch = useDispatch()
     const [loding, setloding] = useState(false);
-
+    console.log("URL ", API_URL)
     const [LoginData, setLoginData] = useState({
         gmail: "",
         password: ""
@@ -51,7 +52,7 @@ export const Login = () => {
 
         } catch (error) {
             console.log("FULL ERROR →", error.response?.data);
-            toast.error(error.response?.data?.message || "Login failed");
+            toast.error(error.response?.data?.message || "Login have failed");
         } finally {
             setloding(false);
         }
