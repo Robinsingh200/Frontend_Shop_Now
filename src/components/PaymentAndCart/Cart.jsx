@@ -30,64 +30,56 @@ export const AddtoCart = () => {
 
 
 
-    const HandlePayment = async () => {
-        try {
-            const response = await axios.post(
-                `${API_URL}/shop-products/card-shop/payment`,
-                {
-                    amount: cart.totalPrice,
-                    cartItems: cart.item,
-                    userId: cart.UserId,
-                },
-                {withCredentials:true}
-            );
+   const HandlePayment = async () => {
+  try {
+    const response = await axios.post(
+      `${API_URL}/shop-products/card-shop/payment`,
+      {
+        amount: cart.totalPrice,
+        cartItems: cart.item,
+      },
+      { withCredentials: true }
+    );
 
+    const { order } = response.data;
 
-            const { order } = response.data;
+    const options = {
+      key: RAZORPAY_KEY,
+      amount: order.totalAmount * 100,
+      currency: "INR",
+      name: "Shop Now",
+      description: "Product Payment",
+      order_id: order.razorpayOrderId,
 
-            const options = {
-                key: `${RAZORPAY_KEY}`,
-                amount: order.totalAmount * 100,
-                currency: "INR",
-                name: "Shop Now",
-                description: "Product Payment",
-                order_id: order.razorpayOrderId,
-                handler: async function (response) {
-                    const verify = await axios.post(
-                        `${API_URL}/shop-products/card-shop/paymentVerification`,
-                        {
-                            razorpay_order_id: response.razorpay_order_id,
-                            razorpay_payment_id: response.razorpay_payment_id,
-                            razorpay_signature: response.razorpay_signature,
-                        }
-                    );
+      handler: async function (response) {
+        const verify = await axios.post(
+          `${API_URL}/shop-products/card-shop/paymentVerification`,
+          {
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+          },
+          { withCredentials: true }
+        );
 
-
-                    if (verify.data.success) {
-                        toast.success("Payment successful 🎉");
-                        dispatch(setCart());
-                        nevigate('/shop-products/Useroder'); // navigate to order page
-                    }
-
-
-
-                },
-                prefill: {
-                    name: "Robin Singh",
-                    email: "robinosingh@gmail.com",
-                    contact: "9999999999",
-                },
-                theme: { color: "#3399cc" },
-            };
-
-            const razorpay = new window.Razorpay(options);
-            razorpay.open();
-
-        } catch (error) {
-            toast.error(error?.response?.data?.message || "Payment failed");
-            console.log(error);
+        if (verify.data.success) {
+          toast.success("Payment successful 🎉");
+          dispatch(setCart({ item: [], totalPrice: 0 }));
+          nevigate("/shop-products/Useroder");
         }
+      },
+
+      theme: { color: "#3399cc" },
     };
+
+    const razorpay = new window.Razorpay(options);
+    razorpay.open();
+
+  } catch (error) {
+    toast.error(error?.response?.data?.message || "Payment failed");
+  }
+};
+
 
 
     const RemoveHandle = async (productId) => {
