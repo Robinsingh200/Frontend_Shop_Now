@@ -40,7 +40,7 @@ export const Navbar = () => {
         navigate("/");
       }
     } catch (error) {
-      toast.error(error.response?.data?.message || "Failed to logout");
+      toast.error(error.response?.data?.message || "Failed logout");
     }
   };
 
