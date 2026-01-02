@@ -78,7 +78,8 @@ export const Add = () => {
 
       const response = await axios.post(
         `${API_URL}/admin/addProducts`,
-        formData
+        formData,
+        {withCredentials:true}
       );
 
 
