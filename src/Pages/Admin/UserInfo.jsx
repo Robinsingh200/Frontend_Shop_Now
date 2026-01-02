@@ -5,6 +5,7 @@ import { MdSearch, MdDeleteForever } from "react-icons/md";
 import { AiOutlineDelete } from 'react-icons/ai'
 import { BiEdit } from 'react-icons/bi'
 import { SiGmail } from 'react-icons/si'
+import { API_URL } from '@/config/app';
 
 
 export const UserInfo = () => {
