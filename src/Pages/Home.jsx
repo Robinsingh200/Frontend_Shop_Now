@@ -13,9 +13,9 @@ import { API_URL } from "@/config/app";
 
 
 export const Home = () => {
-  let user = useSelector((state) => state.user) || null;
+  let user = useSelector((state) => state.user) || {};
   const [login, setLogin] = useState(false);
-  const currentUser = user && user.role === "admin";
+  const currentUser = user?.role === "admin"
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -95,27 +95,19 @@ export const Home = () => {
                 </div>
 
                 <div className="flex justify-center">
-                    { user && user._id && (
-                      <div
-                        className="border-t pt-3"
-                        onClick={() => navigate(`/shop-products/profile/${user._id}`)}
-                      >
-                        <button className="flex items-center text-gray-700 hover:text-gray-500 transition w-full cursor-pointer">
-                          <TbShoppingBag size={20} className="mr-3" />
-                          My Profile Data
-                        </button>
-                      </div>
-                    )}
-
+                  {
+                    user ? <button className="bg-[#9F2089] hover:bg-purple-800 text-white font-semibold w-full rounded-md p-2 transition text-center" onClick={() => UserLogOut()}>Logout</button> : <button onClick={() => navigate('/login')} className="bg-[#9F2089] hover:bg-purple-800 text-white font-semibold w-full rounded-md p-2 transition text-center">Login</button>
+                  }
 
                 </div>
 
-                <div className="border-t pt-3" onClick={() => navigate(`/shop-products/profile/${user._id}`)}>
-                  <button className="flex items-center text-gray-700 hover:text-gray-500 transition w-full cursor-pointer">
-                    <TbShoppingBag size={20} className="mr-3" />
-                    My Profile Data
-                  </button>
-                </div>
+                {user._id && (
+                  <div className="flex items-center gap-2 border-l border-gray-700 pl-4 cursor-pointer">
+                    <RiShoppingCart2Line className="text-3xl" />
+                    <span>Cart</span>
+                  </div>
+                )}
+
 
                 {
                   currentUser ?
