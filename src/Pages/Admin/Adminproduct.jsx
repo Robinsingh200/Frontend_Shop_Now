@@ -6,10 +6,13 @@ import axios from 'axios';
 import { toast } from 'sonner';
 import { setProducts } from '@/ReduxToolKit/Products';
 import { API_URL } from "@/config/app";
+import { setSearchQuery } from "@/ReduxToolKit/Searching";
 
 
 export const Adminproduct = () => {
   const products = useSelector((state) => state.product.products) || []
+  const searchQuery = useSelector(state => state.search.query)
+
   console.log("Admin ", products);
   const dispatch = useDispatch();
 
@@ -18,10 +21,10 @@ export const Adminproduct = () => {
     if (!confirmDelete) return;
     try {
 
-     const response =  await axios.delete(
-        `${API_URL}/admin/delete/${productId}`,{
-           withCredentials:true
-        }
+      const response = await axios.delete(
+        `${API_URL}/admin/delete/${productId}`, {
+        withCredentials: true
+      }
       )
 
       if (response.data.success) {
@@ -38,12 +41,20 @@ export const Adminproduct = () => {
 
   }
 
+  
+  const FilterDataForSearch = products.filter((item) =>
+       item.firstName.toLowerCase()
+      .includes(searchQuery.toLowerCase())
+  )
+
   return (
     <section>
       <div className="flex items-center border border-gray-300 w-96 p-1 rounded-xl ml-5 sticky top-0">
         <MdSearch className="text-2xl ml-2" />
         <input
           type="text"
+          value={searchQuery}
+          onChange={(e) => dispatch(setSearchQuery(e.target.value))}
           placeholder="search....."
           className="flex-1 bg-transparent border-none outline-none focus:outline-none focus:ring-0 px-2"
         />
@@ -52,7 +63,7 @@ export const Adminproduct = () => {
       <main className='' >
 
         {
-          products.map((item) => (
+          FilterDataForSearch.map((item) => (
             <div key={item._id}>
 
               <div className=' border border-gray-500 flex gap-5  m-5 p-2 rounded-xl'>

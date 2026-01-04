@@ -15,7 +15,7 @@ import { setSearchQuery } from "@/ReduxToolKit/Searching";
 
 
 
-export const Navbar = () => {
+export const NavbarExtra = () => {
   const user = useSelector((state) => state.user);
   const searchQuery = useSelector(state => state.search.query)
 
@@ -46,42 +46,27 @@ export const Navbar = () => {
     }
   };
 
-  
-
   return (
     <section className="flex items-center justify-between w-full px-20 py-3 bg-white shadow-md sticky top-0 z-50 border-b border-gray-100">
       {/* Logo */}
       <div>
-        <p className="font-bold text-3xl flex justify-center items-center gap-3">
+        <p className="font-bold text-3xl flex justify-center items-center gap-3 ml-15">
           <FcShop />
           Shop<span className="text-red-500">Now</span>
         </p>
       </div>
 
-      {/* Search */}
-      <nav className="flex items-center border border-gray-300 rounded-2xl w-[400px] px-5 py-1 shadow-sm bg-white">
-        <MdSearch className="text-2xl text-gray-500 mr-2" />
-        <input
-          type="text"
-          placeholder="search......"
-          value={searchQuery}
-          onChange={(e)=>dispatch(setSearchQuery(e.target.value))}
-          className="flex-1 bg-transparent border-none outline-none focus:outline-none focus:ring-0 px-2"
-        />
-      </nav>
-
-      {/* Links + Profile */}
-      <div className="flex items-center gap-10">
+     
+      <div className="flex items-center gap-20">
         <ul className="flex gap-6 font-serif text-lg">
-          <li className="border-l border-gray-700 pl-10">
+          <li className=" pl-10">
             <Link to="/">Home</Link>
           </li>
-          <li className="border-l border-gray-700 pl-10">
+          <li className="border-l border-gray-700 pl-15">
             <Link to={`/shop-products`}>Products</Link>
           </li>
         </ul>
 
-        {/* Profile Dropdown */}
 
         <div className="relative"
           onClick={() => setLogin(false)}>

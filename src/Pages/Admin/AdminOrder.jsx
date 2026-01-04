@@ -1,35 +1,46 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner'
-import { MdSearch } from "react-icons/md";
 import { API_URL } from '@/config/app';
+import { setSearchQuery } from "@/ReduxToolKit/Searching";
+import { useDispatch } from 'react-redux';
+
 
 export const AdminOrder = () => {
   const [OrderInfo, setOrderInfo] = useState([]);
+  const searchQuery = useSelector(state => state.search.query)
+  const dispatch = useDispatch();
 
- useEffect(() => {
-  const fetchOrder = async () => {
-    if (typeof window === "undefined") return;
 
-    try {
-      const response = await axios.get(
-        `${API_URL}/shop-products/card-shop/Allorder` , {
-            withCredentials:true
+  useEffect(() => {
+    const fetchOrder = async () => {
+      if (typeof window === "undefined") return;
+
+      try {
+        const response = await axios.get(
+          `${API_URL}/shop-products/card-shop/Allorder`, {
+          withCredentials: true
         }
-      );
+        );
 
-      if (response.data?.success) {
-        setOrderInfo(response.data.orders || []);
+        if (response.data?.success) {
+          setOrderInfo(response.data.orders || []);
+        }
+      } catch (error) {
+        toast.error(
+          error?.response?.data?.message || "Order fetch failed"
+        );
       }
-    } catch (error) {
-      toast.error(
-        error?.response?.data?.message || "Order fetch failed"
-      );
-    }
-  };
+    };
 
-  fetchOrder();
-}, []);
+    fetchOrder();
+  }, []);
+
+
+  const FilterDataForSearch = OrderInfo.filter((item) =>
+      item.productsName.toLowerCase()
+      .includes(searchQuery.toLowerCase())
+  )
 
 
   return (
@@ -46,13 +57,15 @@ export const AdminOrder = () => {
 
       {/* MAIN CONTAINER */}
       <div className="bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden ml-5">
-        
+
         {/* SEARCH BAR AREA */}
         <div className="p-6 border-b border-slate-100 bg-white">
           <div className="flex items-center border-2 border-slate-100 rounded-2xl w-full md:w-[450px] px-5 py-3 shadow-sm bg-slate-50 focus-within:bg-white focus-within:border-indigo-400 transition-all">
             <svg className="w-6 h-6 text-slate-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             <input
               type="text"
+              value={searchQuery}
+              onChange={(e) => dispatch(setSearchQuery(e.target.value))}
               placeholder="Search by customer name..."
               className="flex-1 bg-transparent border-none outline-none text-base font-medium text-slate-700 placeholder:text-slate-400"
             />
@@ -79,12 +92,12 @@ export const AdminOrder = () => {
             const totalQty = userDetails.products?.reduce((acc, item) => acc + (item.quantity || 0), 0) || 0;
 
             return (
-              <div 
-                key={userDetails._id} 
+              <div
+                key={userDetails._id}
                 className="p-6 hover:bg-indigo-50/40 transition-all duration-300 group"
               >
                 <div className="grid grid-cols-7 gap-4 items-center">
-                  
+
                   {/* NO */}
                   <div className="text-center font-mono text-slate-400 text-lg font-bold">
                     {String(index + 1).padStart(2, '0')}
@@ -92,7 +105,7 @@ export const AdminOrder = () => {
 
                   {/* NAME */}
                   <div className=" font-semibold text-lg tracking-tight pl-4 truncate uppercase">
-                    {userDetails.UserId?.firstName} 
+                    {userDetails.UserId?.firstName}
                   </div>
 
                   {/* PRODUCT ID */}
@@ -128,15 +141,14 @@ export const AdminOrder = () => {
                   {/* STATUS */}
                   <div className="text-center">
                     <span
-                      className={`px-5 py-2 rounded-xl text-[12] font-black uppercase tracking-widest transition-all group-hover:scale-105 inline-block ${
-                        userDetails.paymentStatus === "paid"
+                      className={`px-5 py-2 rounded-xl text-[12] font-black uppercase tracking-widest transition-all group-hover:scale-105 inline-block ${userDetails.paymentStatus === "paid"
                           ? "bg-emerald-50 text-emerald-700 border-emerald-200"
                           : userDetails.paymentStatus === "panding"
-                          ? "bg-rose-50 text-rose-700 border-rose-200"
-                          : userDetails.paymentStatus === "created"
-                          ? "bg-blue-50 text-blue-700 border-blue-200"
-                          : "bg-amber-50 text-amber-700 border-amber-200"
-                      }`}
+                            ? "bg-rose-50 text-rose-700 border-rose-200"
+                            : userDetails.paymentStatus === "created"
+                              ? "bg-blue-50 text-blue-700 border-blue-200"
+                              : "bg-amber-50 text-amber-700 border-amber-200"
+                        }`}
                     >
                       {userDetails.paymentStatus || 'Unknown'}
                     </span>

@@ -4,13 +4,15 @@ import { toast } from 'sonner'
 import { MdSearch, MdDeleteForever } from "react-icons/md";
 import { AiOutlineDelete } from 'react-icons/ai'
 import { BiEdit } from 'react-icons/bi'
-import { SiGmail } from 'react-icons/si'
 import { API_URL } from '@/config/app';
 import { BiLogoGmail } from "react-icons/bi";
-
+import { setSearchQuery } from "@/ReduxToolKit/Searching";
+import { useDispatch } from 'react-redux';
 
 export const UserInfo = () => {
   const [userInfo, setUserInfo] = useState([]);
+  const searchQuery = useSelector(state => state.search.query)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const fatchData = async () => {
@@ -33,6 +35,12 @@ export const UserInfo = () => {
 
   }, [])
 
+  
+  const FilterDataForSearch = userInfo.filter((item) =>
+      item.firstName.toLowerCase()
+      .includes(searchQuery.toLowerCase())
+  )
+
   return (
 
     <section className=''>
@@ -49,6 +57,8 @@ export const UserInfo = () => {
           <input
             type="text"
             placeholder="search......"
+            value={searchQuery}
+            onChange={(e) => dispatch(setSearchQuery(e.target.value))}
             className="flex-1 bg-transparent border-none outline-none focus:outline-none focus:ring-0 px-2"
           />
         </nav>
@@ -65,7 +75,7 @@ export const UserInfo = () => {
         </div>
 
         {/* BODY */}
-        {userInfo.map((user) => (
+        {FilterDataForSearch.map((user) => (
           <div key={user._id} className="border-b p-4">
             <div className="grid grid-cols-5 gap-4 ml-8 items-center">
               <div className='font-semibold'>{user.firstName}<div className='font-normal text-gray-700 flex'><BiLogoGmail className="text-xs text-gray-600" />{user.gmail}</div></div>

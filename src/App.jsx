@@ -12,6 +12,7 @@ import { ProfileAndOrder } from "./Pages/ProfileAndOrder"
 import { AddtoCart } from "./components/PaymentAndCart/Cart"
 import { Dashboard } from "./Pages/Dashboard"
 import { SingleProducts } from "./components/Products_Dtails/Single_Photo/SingleProducts"
+import { NavbarExtra } from "./components/ExtraWork/NavbarforExtra"
 
 import { Add } from './Pages/Admin/Add.jsx'
 import { AdminOrder } from './Pages/Admin/AdminOrder'
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
 
 
   {
-    path: "/dashboard", element: <><Navbar /><Dashboardlayout/></>,
+    path: "/dashboard", element: <><NavbarExtra /><Dashboardlayout/></>,
     children: [
       { index: true, element: <Dashboard /> }, 
       { path: "add", element: <Add /> },
