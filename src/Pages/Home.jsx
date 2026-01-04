@@ -15,26 +15,26 @@ import { API_URL } from "@/config/app";
 export const Home = () => {
   let user = useSelector((state) => state.user) || null;
   const [login, setLogin] = useState(false);
-  const currentUser = user?.role === "admin"
+  const currentUser = user && user.role === "admin";
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
 
   const UserLogOut = async () => {
-  try {
-    const response = await axios.post(`${API_URL}/logout`);
+    try {
+      const response = await axios.post(`${API_URL}/logout`);
 
-    if (response.data.success) {
-      dispatch(setProducts(null));
-      toast.success("Logout successfully");
-      navigate("/");
+      if (response.data.success) {
+        dispatch(setProducts(null));
+        toast.success("Logout successfully");
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error(
+        error?.response?.data?.message || "Failed to logout"
+      );
     }
-  } catch (error) {
-    toast.error(
-      error?.response?.data?.message || "Failed to logout"
-    );
-  }
-};
+  };
 
 
 
@@ -95,9 +95,18 @@ export const Home = () => {
                 </div>
 
                 <div className="flex justify-center">
-                  {
-                    user ? <button className="bg-[#9F2089] hover:bg-purple-800 text-white font-semibold w-full rounded-md p-2 transition text-center" onClick={() => UserLogOut()}>Logout</button> : <button onClick={() => navigate('/login')} className="bg-[#9F2089] hover:bg-purple-800 text-white font-semibold w-full rounded-md p-2 transition text-center">Login</button>
-                  }
+                    { user && user._id && (
+                      <div
+                        className="border-t pt-3"
+                        onClick={() => navigate(`/shop-products/profile/${user._id}`)}
+                      >
+                        <button className="flex items-center text-gray-700 hover:text-gray-500 transition w-full cursor-pointer">
+                          <TbShoppingBag size={20} className="mr-3" />
+                          My Profile Data
+                        </button>
+                      </div>
+                    )}
+
 
                 </div>
 
