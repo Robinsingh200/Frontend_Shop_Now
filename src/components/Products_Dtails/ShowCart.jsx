@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineStar } from 'react-icons/ai'
 
 
-export const ShowCart = ({ GetData }) => {
+export const ShowCart = ({ FilterDataForSearch }) => {
 
     const nevigate = useNavigate();
 
@@ -12,8 +12,8 @@ export const ShowCart = ({ GetData }) => {
     return (
         <section className="ml-20 grid grid-cols-4 mt-[79px] gap-3">
 
-            {GetData && GetData.length > 0 ? (
-                GetData.map((product) => (
+            {FilterDataForSearch && FilterDataForSearch.length > 0 ? (
+                FilterDataForSearch.map((product) => (
                     <div
                         key={product._id}
                         className="border rounded-lg mb-5 p-3 shadow-sm w-full h-[370px]"

@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import productReducer  from '../ReduxToolKit/Products.jsx'
 import userInformation from '../ReduxToolKit/UserData.jsx'
+import Search from '../ReduxToolKit/Searching.jsx'
 
 
 const persistConfig = {
@@ -13,6 +14,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userInformation, 
   product: productReducer ,
+  Search:Search
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -6,6 +6,7 @@ import { AiOutlineDelete } from 'react-icons/ai'
 import { BiEdit } from 'react-icons/bi'
 import { SiGmail } from 'react-icons/si'
 import { API_URL } from '@/config/app';
+import { BiLogoGmail } from "react-icons/bi";
 
 
 export const UserInfo = () => {
@@ -67,7 +68,7 @@ export const UserInfo = () => {
         {userInfo.map((user) => (
           <div key={user._id} className="border-b p-4">
             <div className="grid grid-cols-5 gap-4 ml-8 items-center">
-              <div className='font-semibold'>{user.firstName}<div className='font-normal text-gray-700 flex'><SiGmail className="text-xl text-gray-600" />{user.gmail}</div></div>
+              <div className='font-semibold'>{user.firstName}<div className='font-normal text-gray-700 flex'><BiLogoGmail className="text-xs text-gray-600" />{user.gmail}</div></div>
 
 
               <div className="text-center font-medium">

@@ -2,14 +2,16 @@ import axios from 'axios';
 import React, { use, useEffect, useState } from 'react'
 import { toast } from 'sonner';
 import { ShowCart } from './ShowCart';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setProducts } from '@/ReduxToolKit/Products';
 import { API_URL } from '@/config/app';
 
 export const Card_Itam = () => {
   const [GetData, SetData] = useState([])
+  const searchQuery = useSelector((state) => state.search.query);
+
   const dispatch = useDispatch()
-  
+
   console.log("Check", API_URL);
 
 
@@ -29,7 +31,11 @@ export const Card_Itam = () => {
 
   };
 
-  console.log("data", GetData);
+  const FilterDataForSearch = GetData.filter((item) =>
+      item.productsName.toLowerCase()
+      .includes(searchQuery.toLowerCase())
+  )
+
 
   useEffect(() => {
     getProducts();
@@ -37,7 +43,7 @@ export const Card_Itam = () => {
 
   return (
     <main >
-      <ShowCart GetData={GetData} />
+      <ShowCart FilterDataForSearch={FilterDataForSearch} />
     </main>
   )
 }
