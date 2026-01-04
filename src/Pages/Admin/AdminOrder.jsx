@@ -38,7 +38,7 @@ export const AdminOrder = () => {
 
 
   const FilterDataForSearch = OrderInfo.filter((item) =>
-      item.firstName.toLowerCase()
+      item.UserId?.firstName.toLowerCase()
       .includes(searchQuery.toLowerCase())
   )
 
