@@ -36,7 +36,7 @@ export const SingleProducts = () => {
       </main>
 
       <div>
-        <Recomended_Photos />
+        <Recomended_Photos prducts={products}/>
       </div>
     </section>
   );
