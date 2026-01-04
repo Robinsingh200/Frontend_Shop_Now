@@ -11,10 +11,11 @@ import axios from "axios";
 import { setProducts } from "@/ReduxToolKit/UserData";
 import { API_URL } from "@/config/app";
 
+
 export const Home = () => {
   let user = useSelector((state) => state.user);
   const [login, setLogin] = useState(false);
-  const currentUser = user?.role == "admin"
+  const currentUser = user?.role === "admin"
   const dispatch = useDispatch()
   const navigate = useNavigate()
 

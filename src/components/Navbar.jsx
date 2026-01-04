@@ -24,7 +24,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
   console.log(cart);
   console.log("user", user);
-  const currentUser = user.role == "admin"
+  const currentUser = user?.role === "admin"
 
   const UserLogOut = async () => {
     try {
