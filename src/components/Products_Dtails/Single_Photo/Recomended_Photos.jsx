@@ -1,10 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export const Recomended_Photos = ({ products = [] }) => {
+export const Recomended_Photos = ({ products}) => {
   const navigate = useNavigate();
+ console.log(products, "pr");
+ 
 
-  
   return (
     <section className="ml-20 mt-20">
       <h2 className="text-2xl font-semibold mb-6">
