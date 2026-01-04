@@ -13,7 +13,6 @@ import { setCart } from "@/ReduxToolKit/Products";
 import { API_URL } from "@/config/app";
 import { Search } from "lucide-react";
 import { setSearchQuery } from "@/ReduxToolKit/Searching";
-import { useDispatch } from "react-redux";
 
 
 

@@ -8,7 +8,7 @@ export const Recomended_Photos = () => {
             </div>
 
             <main>
-
+                   
             </main>
 
       </section>
