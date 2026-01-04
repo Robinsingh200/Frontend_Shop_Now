@@ -14,7 +14,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userInformation, 
   product: productReducer ,
-  Search:Search
+  query:Search
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
