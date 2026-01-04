@@ -7,7 +7,7 @@ import { BiEdit } from 'react-icons/bi'
 import { API_URL } from '@/config/app';
 import { BiLogoGmail } from "react-icons/bi";
 import { setSearchQuery } from "@/ReduxToolKit/Searching";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const UserInfo = () => {
   const [userInfo, setUserInfo] = useState([]);

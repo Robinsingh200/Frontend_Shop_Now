@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { MdSearch } from "react-icons/md";
-import { Notebook, NotebookPen, Trash, Trash2 } from 'lucide-react';
+import { NotebookPen, Trash, Trash2 } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
 import { setProducts } from '@/ReduxToolKit/Products';
@@ -43,7 +43,7 @@ export const Adminproduct = () => {
 
   
   const FilterDataForSearch = products.filter((item) =>
-       item.firstName.toLowerCase()
+       item.productsName.toLowerCase()
       .includes(searchQuery.toLowerCase())
   )
 

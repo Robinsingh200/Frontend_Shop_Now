@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import { API_URL } from '@/config/app';
 import { setSearchQuery } from "@/ReduxToolKit/Searching";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 export const AdminOrder = () => {
@@ -87,7 +87,7 @@ export const AdminOrder = () => {
 
         {/* TABLE BODY */}
         <div className="divide-y divide-slate-100">
-          {OrderInfo.map((userDetails, index) => {
+          {FilterDataForSearch.map((userDetails, index) => {
             // Calculating total sum of quantities for this order
             const totalQty = userDetails.products?.reduce((acc, item) => acc + (item.quantity || 0), 0) || 0;
 
