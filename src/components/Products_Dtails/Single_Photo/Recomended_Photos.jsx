@@ -1,9 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-export const Recomended_Photos = ({ products}) => {
+export const Recomended_Photos = () => {
+  const products = useSelector((state)=>state.product)
   const navigate = useNavigate();
- console.log(products, "pr");
+  console.log(products, "pr");
  
 
   return (
