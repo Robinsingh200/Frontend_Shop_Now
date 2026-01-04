@@ -1,19 +1,17 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineStar } from 'react-icons/ai'
-import { useSelector } from 'react-redux';
 
 
 export const ShowCart = ({ GetData }) => {
-    const user = useSelector((state)=> state.user)
+
     const nevigate = useNavigate();
-    const users = user.role == "user" || "admin"
 
 
 
     return (
         <section className="ml-20 grid grid-cols-4 mt-[79px] gap-3">
-          
+
             {GetData && GetData.length > 0 ? (
                 GetData.map((product) => (
                     <div

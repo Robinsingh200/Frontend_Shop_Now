@@ -16,19 +16,20 @@ import { API_URL } from "@/config/app";
 
 
 export const Navbar = () => {
-  const user = useSelector((state) => state.user) || {};
+  const user = useSelector((state) => state.user);
   const { cart } = useSelector((state) => state.product);
 
   const [login, setLogin] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const currentUser = user?.role === "admin"
+  console.log(cart);
+  console.log("user", user);
+  const currentUser = user.role == "admin"
 
   const UserLogOut = async () => {
     try {
       const response = await axios.post(`${API_URL}/logout`, {},
-        { withCredentials: true }
+        {withCredentials: true}
       );
 
       if (response.data.success) {
