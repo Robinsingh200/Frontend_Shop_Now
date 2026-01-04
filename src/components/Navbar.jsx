@@ -18,7 +18,7 @@ import { setSearchQuery } from "@/ReduxToolKit/Searching";
 
 export const Navbar = () => {
   const user = useSelector((state) => state.user);
-  
+  const searchQuery = useSelector(state => state.search.query)
 
   const { cart } = useSelector((state) => state.product);
 
