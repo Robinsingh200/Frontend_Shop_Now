@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "@/ReduxToolKit/UserData";
 import { setCart } from "@/ReduxToolKit/Products";
 import { API_URL } from "@/config/app";
-import { Search } from "lucide-react";
 import { setSearchQuery } from "@/ReduxToolKit/Searching";
 
 
@@ -63,7 +62,7 @@ export const Navbar = () => {
         <input
           type="text"
           placeholder="search......"
-          value={Search}
+          value={searchQuery}
           onChange={(e)=>dispatch(setSearchQuery(e.target.value))}
           className="flex-1 bg-transparent border-none outline-none focus:outline-none focus:ring-0 px-2"
         />
