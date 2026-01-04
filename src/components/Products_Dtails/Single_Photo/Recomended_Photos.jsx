@@ -15,7 +15,7 @@ export const Recomended_Photos = () => {
         People also viewed
       </h2>
 
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-5 gap-5">
         {products.length > 0 ? (
           products.slice(0, 4).map((item) => (
             <div
