@@ -16,7 +16,7 @@ import { API_URL } from "@/config/app";
 
 
 export const Navbar = () => {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user) || null;
   const { cart } = useSelector((state) => state.product);
 
   const [login, setLogin] = useState(false);
