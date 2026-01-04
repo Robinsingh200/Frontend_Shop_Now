@@ -11,7 +11,6 @@ import axios from "axios";
 import { setProducts } from "@/ReduxToolKit/UserData";
 import { API_URL } from "@/config/app";
 
-
 export const Home = () => {
   let user = useSelector((state) => state.user) || {};
   const [login, setLogin] = useState(false);
@@ -21,20 +20,20 @@ export const Home = () => {
 
 
   const UserLogOut = async () => {
-    try {
-      const response = await axios.post(`${API_URL}/logout`);
+  try {
+    const response = await axios.post(`${API_URL}/logout`);
 
-      if (response.data.success) {
-        dispatch(setProducts(null));
-        toast.success("Logout successfully");
-        navigate("/");
-      }
-    } catch (error) {
-      toast.error(
-        error?.response?.data?.message || "Failed to logout"
-      );
+    if (response.data.success) {
+      dispatch(setProducts(null));
+      toast.success("Logout successfully");
+      navigate("/");
     }
-  };
+  } catch (error) {
+    toast.error(
+      error?.response?.data?.message || "Failed to logout"
+    );
+  }
+};
 
 
 
@@ -101,13 +100,12 @@ export const Home = () => {
 
                 </div>
 
-                {user._id && (
-                  <div className="flex items-center gap-2 border-l border-gray-700 pl-4 cursor-pointer">
-                    <RiShoppingCart2Line className="text-3xl" />
-                    <span>Cart</span>
-                  </div>
-                )}
-
+                <div className="border-t pt-3" onClick={() => navigate(`/shop-products/profile/${user._id}`)}>
+                  <button className="flex items-center text-gray-700 hover:text-gray-500 transition w-full cursor-pointer">
+                    <TbShoppingBag size={20} className="mr-3" />
+                    My Profile Data
+                  </button>
+                </div>
 
                 {
                   currentUser ?

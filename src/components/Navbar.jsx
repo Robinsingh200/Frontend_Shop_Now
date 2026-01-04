@@ -16,15 +16,14 @@ import { API_URL } from "@/config/app";
 
 
 export const Navbar = () => {
-  const user = useSelector((state) => state.user) || null;
+  const user = useSelector((state) => state.user) || {};
   const { cart } = useSelector((state) => state.product);
 
   const [login, setLogin] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const currentUser = user && user.role === "admin";
-
+  const currentUser = user?.role === "admin"
 
   const UserLogOut = async () => {
     try {
@@ -111,18 +110,9 @@ export const Navbar = () => {
               </div>
 
               <div className="flex justify-center">
-                {user && user._id && (
-                  <div
-                    className="border-t pt-3"
-                    onClick={() => navigate(`/shop-products/profile/${user._id}`)}
-                  >
-                    <button className="flex items-center text-gray-700 hover:text-gray-500 transition w-full cursor-pointer">
-                      <TbShoppingBag size={20} className="mr-3" />
-                      My Profile Data
-                    </button>
-                  </div>
-                )}
-
+                {
+                  user && user._id ? <button className="bg-[#9F2089] hover:bg-purple-800 text-white font-semibold w-full rounded-md p-2 transition text-center" onClick={() => UserLogOut()}>Logout</button> : <button onClick={() => navigate('/login')} className="bg-[#9F2089] hover:bg-purple-800 text-white font-semibold w-full rounded-md p-2 transition text-center">Login</button>
+                }
 
               </div>
 
