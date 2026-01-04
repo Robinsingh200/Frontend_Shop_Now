@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import { Footer } from "@/components/Footer";
 export const Recomended_Photos = () => {
   const products = useSelector(
     (state) => state.product.products
@@ -10,7 +10,7 @@ export const Recomended_Photos = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="ml-20 mt-20">
+    <section className="ml-20 mt-20 mr-10">
       <h2 className="text-2xl font-semibold mb-6">
         People also viewed
       </h2>
@@ -45,6 +45,7 @@ export const Recomended_Photos = () => {
           </p>
         )}
       </div>
+      <Footer/>
     </section>
   );
 };
