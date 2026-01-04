@@ -25,7 +25,7 @@ export const SingleProducts = () => {
   }
 
   return (
-    <section className="mb-96">
+    <section className="mb-20">
       <div className="ml-20 font-semibold mb-8">
         <BreadCursum singleProduct={singleProduct} />
       </div>

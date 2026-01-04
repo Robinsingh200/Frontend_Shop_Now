@@ -45,7 +45,6 @@ export const Recomended_Photos = () => {
           </p>
         )}
       </div>
-      <Footer/>
     </section>
   );
 };
